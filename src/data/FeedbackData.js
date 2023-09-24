@@ -1,22 +1,27 @@
 const FeedbackData = [
   {
+    id: 1,
     rating: "10",
     text: "lorem ipsum dolor sit amet lorem in reprehenderit in voluptate velit esse cillum dolore magna"
   },
   {
-    rating: "11",
+    id: 2,
+    rating: "5",
     text: "lorem ipsum dolor sit amet lorem in rep rehenderit in voluptate velit esse cillum d"
   },
   {
-    rating: "12",
+    id: 3,
+    rating: "6",
     text: "lorem ipsum dolor sit amet lorem in repairerit in voluptate velit esse cillum dolore magna al"
   },
   {
-    rating: "13",
+    id: 4,
+    rating: "7",
     text: "lorem ipsum dolor sit amet lorem in rep  reperenderit in voluptate velit esse"
   },
   {
-    rating: "14",
+    id: 5,
+    rating: "8",
     text: "lorem ipsum dolor sit amet lorem in rep reperenderit in voluptate velit esse cillum dol"
   }
 ];
