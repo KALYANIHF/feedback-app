@@ -1,4 +1,3 @@
-import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
 import { useContext } from 'react';
 import FeedbackItem from './FeedbackItem';
@@ -11,11 +10,9 @@ function FeedbackList() {
   }
   return (
     <>
-      <AnimatePresence>
-        {feedback.map((item) => (
-          <FeedbackItem key={item.id} item={item} />
-        ))}
-      </AnimatePresence>
+      {feedback.map((item) => (
+        <FeedbackItem key={item.id} item={item} />
+      ))}
     </>
   );
 }
