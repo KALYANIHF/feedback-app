@@ -1,14 +1,17 @@
-import { FaTimes } from "react-icons/fa";
-import React from "react";
-import Cart from "./shared/Cart";
+import { FaTimes } from 'react-icons/fa';
+import React from 'react';
+import Cart from './shared/Cart';
+import { useContext } from 'react';
+import FeedbackContext from '../context/FeedbackContext';
 
-function FeedbackItem({ item, handleDelete }) {
+function FeedbackItem({ item }) {
+  const { deleteFeedback } = useContext(FeedbackContext);
   return (
     <Cart reverse={true}>
       <div className="num-display">{item.rating}</div>
       <button
         onClick={() => {
-          handleDelete(item.id);
+          deleteFeedback(item.id);
         }}
         className="close"
       >
