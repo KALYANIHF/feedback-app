@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import Cart from './shared/Cart';
 import Button from './shared/Button';
 import RatingSelect from './RatingSelect';
@@ -7,11 +7,19 @@ import { v4 as uuidv4 } from 'uuid';
 import FeedbackContext from '../context/FeedbackContext';
 
 function FeedbackForm() {
-  const { addFeedback } = useContext(FeedbackContext);
+  const { addFeedback, feedbackEdit, updateFeedback } =
+    useContext(FeedbackContext);
   const [text, setText] = useState('');
   const [buttonDisabled, setButtonDisabled] = useState(true);
   const [message, setMessage] = useState('');
   const [rating, setRating] = useState(10);
+  useEffect(() => {
+    if (feedbackEdit.edit === true) {
+      setButtonDisabled(false);
+      setText(feedbackEdit.item.text);
+      setRating(feedbackEdit.item.rating);
+    }
+  }, [feedbackEdit]);
   const handleTextChange = (e) => {
     if (text === '') {
       setButtonDisabled(true);
@@ -35,7 +43,11 @@ function FeedbackForm() {
       };
       FeedbackFormData.id = uuidv4();
       // console.log(FeedbackFormData);
-      addFeedback(FeedbackFormData);
+      if (feedbackEdit.edit === true) {
+        updateFeedback(feedbackEdit.item.id, FeedbackFormData);
+      } else {
+        addFeedback(FeedbackFormData);
+      }
       setText('');
     } else {
       console.log('Please enter a valid feedback');
